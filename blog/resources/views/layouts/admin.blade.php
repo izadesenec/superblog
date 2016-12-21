@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    @section('header')
     <head>
         <title>My laravel News site</title>
 
@@ -14,7 +15,10 @@
         <link href="css/main.css" rel="stylesheet" type="text/css"/>
 
     </head>
+    @endsection
+    @yield('header')
     <body>
+        @section('body')
         <div class="container">
             <nav role="navigation" class="navbar navbar-default">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -30,18 +34,15 @@
                 <!-- Collection of nav links, forms, and other content for toggling -->
                 <div id="navbarCollapse" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="">Главная</a></li>
-                        <li class="active"><a href="">Создать Категорию</a></li>
+                        <li class="active"><a href="{{route('index')}}">Главная</a></li>
+                        <li class="active"><a href="{{route('create')}}">Добавить Категорию</a></li>
+                        <li class="active"><a href="{{route('addarticles')}}">Добавить Новости</a></li>
                     </ul>
                     
                 </div>
             </nav>
-            @foreach($news as $item)
-            <div>
-                {{$item->name}}<br/>
-                {{$item->category->category}}
-            </div>
-            @endforeach
+            @endsection
+            @yield('body')
             @yield('content')
         </div>
         <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
@@ -51,4 +52,5 @@
         </nav>
 
     </body>
+    
 </html>
